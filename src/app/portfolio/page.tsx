@@ -10,7 +10,7 @@ import {
 } from "@/components/ui/card";
 
 export const metadata = {
-  title: "Portfolio | Yashedu Connect",
+  title: "Portfolio | CodeYash Developers",
   description: "Browse a collection of past projects and case studies.",
 };
 

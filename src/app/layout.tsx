@@ -5,7 +5,7 @@ import { Footer } from '@/components/footer';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: 'Yashedu Connect',
+  title: 'CodeYash Developers',
   description: 'Empowering Your Digital Presence',
 };
 

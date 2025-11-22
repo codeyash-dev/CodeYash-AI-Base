@@ -1,7 +1,7 @@
 import { ContactForm } from "@/components/contact-form";
 
 export const metadata = {
-  title: "Contact Us | Yashedu Connect",
+  title: "Contact Us | CodeYash Developers",
   description: "Get in touch for project inquiries, collaborations, or any questions.",
 };
 

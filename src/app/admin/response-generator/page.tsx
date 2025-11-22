@@ -1,7 +1,7 @@
 import { ResponseGeneratorForm } from "@/components/response-generator-form";
 
 export const metadata = {
-  title: "AI Response Generator | Yashedu Connect",
+  title: "AI Response Generator | CodeYash Developers",
   description: "Use AI to generate professional responses to client inquiries instantly.",
 };
 

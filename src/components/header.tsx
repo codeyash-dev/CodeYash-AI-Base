@@ -29,7 +29,7 @@ export function Header() {
           <Link href="/" className="mr-6 flex items-center space-x-2">
             <CodeXml className="h-6 w-6 text-primary" />
             <span className="hidden font-bold font-headline sm:inline-block">
-              Yashedu Connect
+              CodeYash Developers
             </span>
           </Link>
           <nav className="flex items-center space-x-6 text-sm font-medium">
@@ -62,7 +62,7 @@ export function Header() {
                 <Link href="/" className="mr-6 flex items-center space-x-2">
                   <CodeXml className="h-6 w-6 text-primary" />
                   <span className="font-bold font-headline">
-                    Yashedu Connect
+                    CodeYash Developers
                   </span>
                 </Link>
                 <div className="my-4 h-[calc(100vh-8rem)] pb-10 pl-6">
@@ -85,7 +85,7 @@ export function Header() {
             </Sheet>
             <Link href="/" className="flex items-center space-x-2 md:hidden">
               <CodeXml className="h-6 w-6 text-primary" />
-              <span className="font-bold font-headline">Yashedu Connect</span>
+              <span className="font-bold font-headline">CodeYash Developers</span>
             </Link>
           </div>
           <nav className="flex items-center">

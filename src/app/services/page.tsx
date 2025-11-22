@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/card";
 
 export const metadata = {
-  title: "Services | Yashedu Connect",
+  title: "Services | CodeYash Developers",
   description: "Explore the range of professional services offered, from web development to AI integration.",
 };
 
