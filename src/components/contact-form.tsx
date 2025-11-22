@@ -14,6 +14,14 @@ import {
 } from "@/components/ui/card";
 
 export function ContactForm() {
+  const [redirectUrl, setRedirectUrl] = React.useState('');
+
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      setRedirectUrl(`${window.location.origin}/contact`);
+    }
+  }, []);
+
   return (
     <Card className="max-w-xl mx-auto">
       <CardHeader>
@@ -24,6 +32,7 @@ export function ContactForm() {
       </CardHeader>
       <CardContent>
         <form action="https://formsubmit.co/feedback@codeyash.edu.lk" method="POST" className="space-y-4">
+          <input type="hidden" name="_next" value={redirectUrl} />
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
             <Input id="name" name="name" placeholder="Your Name" required />
