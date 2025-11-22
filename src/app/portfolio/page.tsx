@@ -24,10 +24,10 @@ export default function PortfolioPage() {
         </p>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-        {portfolioProjects.map((project) => {
+        {portfolioProjects.map((project, index) => {
           const image = PlaceHolderImages.find((img) => img.id === project.imageId);
           return (
-            <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-primary/30">
+            <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-primary/50" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
               {image && (
                  <div className="overflow-hidden aspect-[16/9] bg-muted relative">
                     <Image
