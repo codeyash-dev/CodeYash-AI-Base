@@ -21,10 +21,10 @@ export default function Home() {
           <h1 className="text-4xl md:text-6xl font-bold font-headline tracking-tighter mb-4 animate-fade-in-down">
             Empowering Your Digital Presence
           </h1>
-          <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-8">
+          <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in-down animation-delay-300">
             From custom web solutions to intelligent AI integrations, I bring your ideas to life. Let's build something amazing together.
           </p>
-          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90">
+          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 animate-fade-in-up animation-delay-600">
             <Link href="/contact">Get a Free Quote <ArrowRight className="ml-2 h-5 w-5" /></Link>
           </Button>
         </div>
@@ -33,13 +33,13 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="py-16 md:py-24">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">My Services</h2>
             <p className="text-lg text-muted-foreground mt-2">Crafting solutions for the modern web.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {services.map((service) => (
-              <Card key={service.title} className="text-center hover:shadow-lg transition-shadow duration-300">
+            {services.map((service, index) => (
+              <Card key={service.title} className="text-center hover:shadow-lg transition-shadow duration-300 animate-fade-in-up" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                 <CardHeader>
                   <div className="mx-auto bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center mb-4">
                     <service.icon className="h-8 w-8" />
@@ -58,15 +58,15 @@ export default function Home() {
       {/* Portfolio Section */}
       <section id="portfolio" className="py-16 md:py-24 bg-secondary/50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 animate-fade-in-up">
             <h2 className="text-3xl md:text-4xl font-bold font-headline">Recent Work</h2>
             <p className="text-lg text-muted-foreground mt-2">A glimpse into my project portfolio.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {portfolioProjects.slice(0, 2).map((project) => {
+            {portfolioProjects.slice(0, 2).map((project, index) => {
               const image = PlaceHolderImages.find(p => p.id === project.imageId);
               return (
-                <Card key={project.id} className="overflow-hidden group">
+                <Card key={project.id} className="overflow-hidden group animate-fade-in-up" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                   {image && (
                     <div className="overflow-hidden">
                       <Image
@@ -87,7 +87,7 @@ export default function Home() {
               );
             })}
           </div>
-          <div className="text-center mt-12">
+          <div className="text-center mt-12 animate-fade-in-up">
             <Button asChild variant="outline">
               <Link href="/portfolio">View All Projects</Link>
             </Button>
