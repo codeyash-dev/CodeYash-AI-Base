@@ -29,13 +29,12 @@ export default function PortfolioPage() {
           return (
             <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
               {image && (
-                 <div className="overflow-hidden aspect-video bg-muted">
+                 <div className="overflow-hidden aspect-video bg-muted relative">
                     <Image
                       src={image.imageUrl}
                       alt={project.title}
-                      width={600}
-                      height={400}
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                      fill
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
                       data-ai-hint={image.imageHint}
                     />
                  </div>

@@ -69,19 +69,18 @@ export default function Home() {
               return (
                 <Card key={project.id} className="overflow-hidden group animate-fade-in-up" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                   {image && (
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden aspect-video bg-muted relative">
                       <Image
                         src={image.imageUrl}
                         alt={project.title}
-                        width={600}
-                        height={400}
-                        className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-500"
+                        fill
+                        className="object-cover group-hover:scale-105 transition-transform duration-500"
                         data-ai-hint={image.imageHint}
                       />
                     </div>
                   )}
                   <CardHeader>
-                    <CardTitle className="font-headline text-xl">{project.title}</CardTitle>
+                    <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
                     <CardDescription className="text-sm">{project.description}</CardDescription>
                   </CardHeader>
                 </Card>
