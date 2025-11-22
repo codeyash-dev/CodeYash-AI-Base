@@ -41,11 +41,9 @@ export default function PortfolioPage() {
                  </div>
               )}
               <CardHeader>
-                <CardTitle className="font-headline text-2xl">{project.title}</CardTitle>
+                <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
+                <CardDescription className="text-xs">{project.description}</CardDescription>
               </CardHeader>
-              <CardContent>
-                <CardDescription>{project.description}</CardDescription>
-              </CardContent>
             </Card>
           );
         })}
