@@ -29,7 +29,7 @@ const formSchema = z.object({
 function SubmitButton() {
   const { pending } = useFormStatus();
   return (
-    <Button type="submit" disabled={pending} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/20 animate-pulse-glow">
+    <Button type="submit" disabled={pending} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 hover:shadow-accent/50 hover:shadow-[0_0_25px_5px]">
       {pending ? 'Sending...' : 'Send Message'}
     </Button>
   );
