@@ -1,9 +1,5 @@
-"use client";
 
-import { useForm } from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { z } from 'zod';
-import { useToast } from '@/hooks/use-toast';
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -17,38 +13,7 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 
-const formSchema = z.object({
-  name: z.string().min(2, { message: "Name must be at least 2 characters." }),
-  email: z.string().email({ message: "Please enter a valid email address." }),
-  message: z.string().min(10, { message: "Message must be at least 10 characters." }),
-});
-
-type FormData = z.infer<typeof formSchema>;
-
 export function ContactForm() {
-  const { toast } = useToast();
-  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
-    resolver: zodResolver(formSchema),
-    defaultValues: { name: "", email: "", message: "" }
-  });
-
-  const onSubmit = (data: FormData) => {
-    const recipientEmail = "feedback@codeyash.edu.lk";
-    const subject = `New message from ${data.name}`;
-    const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
-    
-    const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    
-    window.location.href = mailtoLink;
-
-    toast({
-      title: "Email client opened",
-      description: "Please send the email from your mail client.",
-    });
-
-    reset();
-  };
-
   return (
     <Card className="max-w-xl mx-auto">
       <CardHeader>
@@ -58,21 +23,18 @@ export function ContactForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+        <form action="https://formsubmit.co/feedback@codeyash.edu.lk" method="POST" className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
-            <Input id="name" {...register('name')} placeholder="Your Name" />
-            {errors?.name && <p className="text-sm font-medium text-destructive">{errors.name.message}</p>}
+            <Input id="name" name="name" placeholder="Your Name" required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
-            <Input id="email" type="email" {...register('email')} placeholder="your.email@example.com" />
-            {errors?.email && <p className="text-sm font-medium text-destructive">{errors.email.message}</p>}
+            <Input id="email" type="email" name="email" placeholder="your.email@example.com" required />
           </div>
           <div className="space-y-2">
             <Label htmlFor="message">Message</Label>
-            <Textarea id="message" {...register('message')} placeholder="Tell me about your project..." rows={5} />
-            {errors?.message && <p className="text-sm font-medium text-destructive">{errors.message.message}</p>}
+            <Textarea id="message" name="message" placeholder="Tell me about your project..." rows={5} required />
           </div>
           <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 hover:shadow-accent/50 hover:shadow-[0_0_25px_5px]">
             Send Message
