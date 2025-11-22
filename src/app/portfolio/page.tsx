@@ -27,7 +27,7 @@ export default function PortfolioPage() {
         {portfolioProjects.map((project) => {
           const image = PlaceHolderImages.find((img) => img.id === project.imageId);
           return (
-            <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+            <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/30">
               {image && (
                  <div className="overflow-hidden aspect-video bg-muted relative">
                     <Image
@@ -36,6 +36,7 @@ export default function PortfolioPage() {
                       fill
                       className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
                       data-ai-hint={image.imageHint}
+                      sizes="100vw"
                     />
                  </div>
               )}

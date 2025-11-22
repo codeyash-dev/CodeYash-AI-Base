@@ -26,8 +26,8 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center">
         <div className="mr-4 hidden md:flex">
-          <Link href="/" className="mr-6 flex items-center space-x-2">
-            <CodeXml className="h-6 w-6 text-primary" />
+          <Link href="/" className="mr-6 flex items-center space-x-2 group">
+            <CodeXml className="h-6 w-6 text-primary transition-all duration-300 group-hover:animate-glow" />
             <span className="hidden font-bold font-headline sm:inline-block">
               CodeYash Developers
             </span>

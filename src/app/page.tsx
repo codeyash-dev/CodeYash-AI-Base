@@ -25,7 +25,7 @@ export default function Home() {
           <p className="max-w-2xl mx-auto text-lg md:text-xl text-muted-foreground mb-8 animate-fade-in-down animation-delay-300">
             From custom web solutions to intelligent AI integrations, I bring your ideas to life. Let's build something amazing together.
           </p>
-          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 animate-fade-in-up animation-delay-600 shadow-lg shadow-accent/20">
+          <Button asChild size="lg" className="bg-accent text-accent-foreground hover:bg-accent/90 animate-fade-in-up animation-delay-600 shadow-lg shadow-accent/20 animate-pulse-glow">
             <Link href="/contact">Get a Free Quote <ArrowRight className="ml-2 h-5 w-5" /></Link>
           </Button>
         </div>
@@ -40,9 +40,9 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <Card key={service.title} className="text-center hover:shadow-2xl hover:-translate-y-2 transition-transform-shadow duration-300 animate-fade-in-up" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
+              <Card key={service.title} className="text-center hover:shadow-2xl hover:-translate-y-2 transition-transform-shadow duration-300 animate-fade-in-up group" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                 <CardHeader>
-                  <div className="mx-auto bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
+                  <div className="mx-auto bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:animate-glow">
                     <service.icon className="h-8 w-8" />
                   </div>
                   <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
@@ -67,7 +67,7 @@ export default function Home() {
             {portfolioProjects.slice(0, 2).map((project, index) => {
               const image = PlaceHolderImages.find(p => p.id === project.imageId);
               return (
-                <Card key={project.id} className="overflow-hidden group animate-fade-in-up" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
+                <Card key={project.id} className="overflow-hidden group animate-fade-in-up transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/30" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                   {image && (
                     <div className="overflow-hidden aspect-video bg-muted relative">
                       <Image
@@ -76,6 +76,7 @@ export default function Home() {
                         fill
                         className="object-cover group-hover:scale-105 transition-transform duration-500"
                         data-ai-hint={image.imageHint}
+                        sizes="100vw"
                       />
                     </div>
                   )}

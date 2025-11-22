@@ -17,8 +17,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        body: ['Inter', 'sans-serif'],
-        headline: ['Lexend', 'sans-serif'],
+        body: ['"Sora"', 'sans-serif'],
+        headline: ['"Poppins"', 'sans-serif'],
         code: ['monospace'],
       },
       colors: {
@@ -115,12 +115,32 @@ export default {
             transform: 'translateY(0)',
           },
         },
+        glow: {
+          '0%, 100%': {
+            'text-shadow': '0 0 5px hsl(var(--primary)), 0 0 10px hsl(var(--primary))',
+            filter: 'brightness(1.2)',
+          },
+          '50%': {
+            'text-shadow': '0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary))',
+            filter: 'brightness(1.5)',
+          },
+        },
+        'pulse-glow': {
+          '0%, 100%': {
+            'box-shadow': '0 0 5px hsl(var(--accent)), 0 0 10px hsl(var(--accent))',
+          },
+          '50%': {
+            'box-shadow': '0 0 15px hsl(var(--accent)), 0 0 25px hsl(var(--accent))',
+          },
+        },
       },
       animation: {
         'accordion-down': 'accordion-down 0.2s ease-out',
         'accordion-up': 'accordion-up 0.2s ease-out',
         'fade-in-down': 'fade-in-down 0.5s ease-out forwards',
         'fade-in-up': 'fade-in-up 0.5s ease-out forwards',
+        glow: 'glow 2s ease-in-out infinite',
+        'pulse-glow': 'pulse-glow 2.5s ease-in-out infinite',
       },
     },
   },
