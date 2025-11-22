@@ -89,7 +89,7 @@ export function Header() {
             </Link>
           </div>
           <nav className="flex items-center">
-            <Button asChild variant="secondary" size="sm">
+            <Button asChild size="sm" className="bg-accent text-accent-foreground hover:bg-accent/90 shadow-lg shadow-accent/20 animate-pulse-glow">
               <Link href="/admin/response-generator">
                 AI Tools
               </Link>
