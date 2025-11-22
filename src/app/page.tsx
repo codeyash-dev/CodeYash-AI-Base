@@ -40,7 +40,7 @@ export default function Home() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             {services.map((service, index) => (
-              <Card key={service.title} className="text-center hover:shadow-2xl hover:-translate-y-2 transition-transform-shadow duration-300 animate-fade-in-up group" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
+              <Card key={service.title} className="text-center hover:shadow-2xl hover:-translate-y-2 transition-all duration-300 animate-fade-in-up group hover:shadow-accent/30" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                 <CardHeader>
                   <div className="mx-auto bg-primary text-primary-foreground rounded-full h-16 w-16 flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110 group-hover:animate-glow">
                     <service.icon className="h-8 w-8" />
@@ -69,7 +69,7 @@ export default function Home() {
               return (
                 <Card key={project.id} className="overflow-hidden group animate-fade-in-up transition-all duration-300 hover:shadow-primary/50" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                   {image && (
-                    <div className="overflow-hidden aspect-[16/9] bg-muted relative">
+                    <div className="overflow-hidden aspect-video bg-muted relative">
                       <Image
                         src={image.imageUrl}
                         alt={project.title}
