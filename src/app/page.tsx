@@ -67,22 +67,22 @@ export default function Home() {
             {portfolioProjects.slice(0, 2).map((project, index) => {
               const image = PlaceHolderImages.find(p => p.id === project.imageId);
               return (
-                <Card key={project.id} className="overflow-hidden group animate-fade-in-up transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/30" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
+                <Card key={project.id} className="overflow-hidden group animate-fade-in-up transition-all duration-300 hover:shadow-primary/50" style={{ animationDelay: `${200 * (index + 1)}ms` }}>
                   {image && (
-                    <div className="overflow-hidden aspect-video bg-muted relative">
+                    <div className="overflow-hidden aspect-[16/9] bg-muted relative">
                       <Image
                         src={image.imageUrl}
                         alt={project.title}
                         fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="object-cover group-hover:scale-105 transition-transform duration-500 group-hover:shadow-[0_0_25px_5px] group-hover:shadow-accent/50"
                         data-ai-hint={image.imageHint}
                         sizes="100vw"
                       />
                     </div>
                   )}
                   <CardHeader>
-                    <CardTitle className="font-headline text-lg">{project.title}</CardTitle>
-                    <CardDescription className="text-sm">{project.description}</CardDescription>
+                    <CardTitle className="font-headline text-base">{project.title}</CardTitle>
+                    <CardDescription className="text-xs">{project.description}</CardDescription>
                   </CardHeader>
                 </Card>
               );

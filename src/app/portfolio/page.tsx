@@ -27,14 +27,14 @@ export default function PortfolioPage() {
         {portfolioProjects.map((project) => {
           const image = PlaceHolderImages.find((img) => img.id === project.imageId);
           return (
-            <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 hover:shadow-primary/30">
+            <Card key={project.id} className="overflow-hidden group transition-all duration-300 hover:shadow-primary/30">
               {image && (
-                 <div className="overflow-hidden aspect-video bg-muted relative">
+                 <div className="overflow-hidden aspect-[16/9] bg-muted relative">
                     <Image
                       src={image.imageUrl}
                       alt={project.title}
                       fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500 ease-in-out group-hover:shadow-[0_0_25px_5px] group-hover:shadow-accent/50"
                       data-ai-hint={image.imageHint}
                       sizes="100vw"
                     />
