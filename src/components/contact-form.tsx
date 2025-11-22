@@ -1,11 +1,8 @@
 "use client";
 
-import { useEffect } from 'react';
-import { useFormState, useFormStatus } from 'react-dom';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { z } from 'zod';
-import { submitContactForm } from '@/lib/actions';
 import { useToast } from '@/hooks/use-toast';
 
 import { Button } from "@/components/ui/button";
@@ -26,42 +23,31 @@ const formSchema = z.object({
   message: z.string().min(10, { message: "Message must be at least 10 characters." }),
 });
 
-function SubmitButton() {
-  const { pending } = useFormStatus();
-  return (
-    <Button type="submit" disabled={pending} className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 hover:shadow-accent/50 hover:shadow-[0_0_25px_5px]">
-      {pending ? 'Sending...' : 'Send Message'}
-    </Button>
-  );
-}
+type FormData = z.infer<typeof formSchema>;
 
 export function ContactForm() {
   const { toast } = useToast();
-  const [state, formAction] = useFormState(submitContactForm, { message: '', success: false });
-  const { register, reset, formState: { errors } } = useForm({
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: { name: "", email: "", message: "" }
   });
 
-  useEffect(() => {
-    if (state.message) {
-      if (state.success) {
-        toast({
-          title: "Success!",
-          description: state.message,
-        });
-        reset();
-      } else {
-        toast({
-          title: "Error",
-          description: state.message,
-          variant: "destructive",
-        });
-      }
-    }
-  }, [state, toast, reset]);
-  
-  const displayErrors = state.errors || errors;
+  const onSubmit = (data: FormData) => {
+    const recipientEmail = "feedback@codeyash.edu.lk";
+    const subject = `New message from ${data.name}`;
+    const body = `Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`;
+    
+    const mailtoLink = `mailto:${recipientEmail}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    
+    window.location.href = mailtoLink;
+
+    toast({
+      title: "Email client opened",
+      description: "Please send the email from your mail client.",
+    });
+
+    reset();
+  };
 
   return (
     <Card className="max-w-xl mx-auto">
@@ -72,23 +58,25 @@ export function ContactForm() {
         </CardDescription>
       </CardHeader>
       <CardContent>
-        <form action={formAction} className="space-y-4">
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
           <div className="space-y-2">
             <Label htmlFor="name">Name</Label>
             <Input id="name" {...register('name')} placeholder="Your Name" />
-            {displayErrors?.name && <p className="text-sm font-medium text-destructive">{displayErrors.name[0]}</p>}
+            {errors?.name && <p className="text-sm font-medium text-destructive">{errors.name.message}</p>}
           </div>
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input id="email" type="email" {...register('email')} placeholder="your.email@example.com" />
-            {displayErrors?.email && <p className="text-sm font-medium text-destructive">{displayErrors.email[0]}</p>}
+            {errors?.email && <p className="text-sm font-medium text-destructive">{errors.email.message}</p>}
           </div>
           <div className="space-y-2">
             <Label htmlFor="message">Message</Label>
             <Textarea id="message" {...register('message')} placeholder="Tell me about your project..." rows={5} />
-            {displayErrors?.message && <p className="text-sm font-medium text-destructive">{displayErrors.message[0]}</p>}
+            {errors?.message && <p className="text-sm font-medium text-destructive">{errors.message.message}</p>}
           </div>
-          <SubmitButton />
+          <Button type="submit" className="w-full bg-accent text-accent-foreground hover:bg-accent/90 transition-all duration-300 hover:shadow-accent/50 hover:shadow-[0_0_25px_5px]">
+            Send Message
+          </Button>
         </form>
       </CardContent>
     </Card>

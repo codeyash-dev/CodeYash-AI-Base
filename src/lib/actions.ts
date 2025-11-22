@@ -4,7 +4,8 @@ import { z } from "zod";
 import { suggestResponse } from '@/ai/flows/ai-suggested-responses';
 import type { SuggestResponseOutput } from '@/ai/flows/ai-suggested-responses';
 
-// Contact form action
+// Contact form action - This is no longer used by the contact form component,
+// but is kept here in case it's needed for other purposes.
 const contactSchema = z.object({
   name: z.string().min(2, 'Name must be at least 2 characters.'),
   email: z.string().email('Invalid email address.'),
