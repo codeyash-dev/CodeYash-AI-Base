@@ -19,7 +19,7 @@ export function ContactForm() {
 
   React.useEffect(() => {
     if (typeof window !== 'undefined') {
-      setRedirectUrl(`${window.location.origin}/contact`);
+      setRedirectUrl(`${window.location.origin}`);
     }
   }, []);
 
